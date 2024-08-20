@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NotesApi from '../../API/notes';
 import { formatDate } from '../../utils/FormatTanggal';
+import ModalUpdateNotes from '../../Page/ModalUpdateNotes';
 const colors = [
   'border-t-red-500',
   'border-t-blue-500',
@@ -12,9 +13,13 @@ const colors = [
 ];
 const Card = (props) => {
   const { id, body, title, createdAt, getNotes } = props;
+
   const [borderColorClass, setBorderColorClass] = useState(
     colors[0],
   );
+
+  const [modalUpdateNotes, setModalUpdateNotes] =
+    useState(false);
 
   const getRandomColorClass = () => {
     const randomIndex = Math.floor(
@@ -38,23 +43,34 @@ const Card = (props) => {
   }, []);
 
   return (
-    <div
-      className={`md:max-w-sm flex flex-col bg-white border border-t-4 shadow-sm rounded-xl ${borderColorClass}`}
-    >
-      <div className="p-4 md:p-5">
-        <h3 className="text-lg font-bold text-primary italic">
-          {title}
-        </h3>
-        <p className="mt-2 text-gray-500 truncate">
-          {body}
-        </p>
-        <p>{formatDate(createdAt)}</p>
-        <div className="flex gap-3">
-          <button>Arsip</button>
-          <button onClick={deleteNotes}>Delete</button>
+    <>
+      <div
+        className={`md:max-w-sm flex flex-col bg-white border border-t-4 shadow-sm rounded-xl ${borderColorClass}`}
+      >
+        <div className="p-4 md:p-5">
+          <h3
+            className="text-lg font-bold text-primary italic"
+            onClick={() => setModalUpdateNotes(true)}
+          >
+            {title}
+          </h3>
+          <p className="mt-2 text-gray-500 truncate">
+            {body}
+          </p>
+          <p>{formatDate(createdAt)}</p>
+          <div className="flex gap-3">
+            <button>Arsip</button>
+            <button onClick={deleteNotes}>Delete</button>
+          </div>
         </div>
       </div>
-    </div>
+      {modalUpdateNotes && (
+        <ModalUpdateNotes
+          id={id}
+          setModalUpdateNotes={setModalUpdateNotes}
+        />
+      )}
+    </>
   );
 };
 
