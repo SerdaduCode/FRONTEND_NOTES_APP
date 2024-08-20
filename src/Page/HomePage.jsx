@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Card from "../Components/Card";
-import InputSearch from "../Components/inputSearch";
-import NotesApi from "../API/notes";
-import ModalAddNotes from "./ModalAddNotes";
+import React, { useEffect, useState } from 'react';
+import Card from '../Components/Card';
+import InputSearch from '../Components/InputSearch';
+import NotesApi from '../API/notes';
+import ModalAddNotes from './ModalAddNotes';
 
 const HomePage = () => {
   const [notes, setNotes] = useState([]);
@@ -23,9 +23,11 @@ const HomePage = () => {
             {notes?.map((note) => (
               <Card
                 key={note.id}
+                id={note.id}
                 title={note.title}
                 body={note.body}
                 createdAt={note.createdAt}
+                getNotes={getNotes}
               />
             ))}
           </div>

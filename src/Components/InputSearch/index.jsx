@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 const InputSearch = () => {
   return (
     <div className="px-3 lg:px-0 flex flex-col gap-5 my-10">
-      {/* <div className=" text-center">
-        <p className=" inline-block bg-gradient-to-br from-quaternary to-tertiary bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
+      <div className=" text-center">
+        {/* <p className=" inline-block bg-gradient-to-br from-quaternary to-tertiary bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
           My Notes
-        </p>
-      </div> */}
+        </p> */}
+      </div>
       <p className="text-3xl md:text-4xl text-primary font-bold italic text-center underline">
         My Notes
       </p>
