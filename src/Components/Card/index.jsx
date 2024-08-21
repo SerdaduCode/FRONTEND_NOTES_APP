@@ -11,9 +11,7 @@ const colors = [
   'border-t-pink-500',
   'border-t-indigo-500',
 ];
-const Card = (props) => {
-  const { id, body, title, createdAt, getNotes } = props;
-
+const Card = ({ id, body, title, createdAt, getNotes }) => {
   const [borderColorClass, setBorderColorClass] = useState(
     colors[0],
   );

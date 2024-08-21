@@ -1,19 +1,29 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 
-const Modal = (props) => {
-  const { children, onClose } = props;
+const Modal = ({ children, onClose }) => {
   const ref = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
         onClose();
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener(
+      'mousedown',
+      handleClickOutside,
+    );
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener(
+        'mousedown',
+        handleClickOutside,
+      );
     };
   }, [onClose]);
+
   return (
     <div className="fixed top-0 z-50 flex items-center justify-center h-screen w-screen bg-black bg-opacity-50">
       <div

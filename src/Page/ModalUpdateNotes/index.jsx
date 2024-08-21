@@ -3,9 +3,7 @@ import Modal from '../../Components/Modal';
 import Input from '../../Components/Input';
 import NotesApi from '../../API/notes';
 
-const ModalUpdateNotes = (props) => {
-  const { setModalUpdateNotes, id } = props;
-
+const ModalUpdateNotes = ({ setModalUpdateNotes, id }) => {
   const [note, setNote] = useState({
     id: '',
     title: '',

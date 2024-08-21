@@ -1,16 +1,14 @@
-import React from "react";
-const Input = (props) => {
-  const {
-    type,
-    name,
-    placeholder,
-    className,
-    required,
-    defaultValue,
-    autoFocus,
-    onChange,
-  } = props;
-
+import React from 'react';
+const Input = ({
+  type,
+  name,
+  placeholder,
+  className,
+  required,
+  defaultValue,
+  autoFocus,
+  onChange,
+}) => {
   return (
     <input
       type={type}

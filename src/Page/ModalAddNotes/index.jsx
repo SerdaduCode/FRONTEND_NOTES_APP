@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Modal from "../../Components/Modal";
-import Input from "../../Components/Input";
-import NotesApi from "../../API/notes";
+import React, { useState } from 'react';
+import Modal from '../../Components/Modal';
+import Input from '../../Components/Input';
+import NotesApi from '../../API/notes';
 
-const ModalAddNotes = (props) => {
-  const { setModalAddNotes, setNotes } = props;
+const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
   const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -30,7 +30,10 @@ const ModalAddNotes = (props) => {
       <p className="text-2xl text-primary font-bold italic text-center underline">
         Add Notes
       </p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4"
+      >
         <Input
           type="text"
           placeholder="Title..."
@@ -48,11 +51,11 @@ const ModalAddNotes = (props) => {
           <button
             type="submit"
             className={`${
-              isLoading ? "cursor-not-allowed" : ""
+              isLoading ? 'cursor-not-allowed' : ''
             } bg-primary text-white rounded-lg px-4 py-2`}
             disabled={isLoading}
           >
-            {isLoading ? "Loading..." : "Save"}
+            {isLoading ? 'Loading...' : 'Save'}
           </button>
         </div>
       </form>
