@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import NotesApi from '../../API/notes';
 import { formatDate } from '../../utils/FormatTanggal';
 import ModalUpdateNotes from '../../Page/ModalUpdateNotes';
@@ -70,6 +71,14 @@ const Card = ({ id, body, title, createdAt, getNotes }) => {
       )}
     </>
   );
+};
+
+Card.propTypes = {
+  id: PropTypes.string,
+  body: PropTypes.string,
+  title: PropTypes.string,
+  createdAt: PropTypes.string,
+  getNotes: PropTypes.func,
 };
 
 export default Card;

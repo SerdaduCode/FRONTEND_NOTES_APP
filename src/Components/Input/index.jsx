@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 const Input = ({
   type,
   name,
@@ -22,6 +24,17 @@ const Input = ({
       required={required}
     />
   );
+};
+
+Input.propTypes = {
+  type: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+  required: PropTypes.bool,
+  defaultValue: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default Input;

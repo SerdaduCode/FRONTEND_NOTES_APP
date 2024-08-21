@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Modal from '../../Components/Modal';
 import Input from '../../Components/Input';
 import NotesApi from '../../API/notes';
@@ -61,6 +62,11 @@ const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
       </form>
     </Modal>
   );
+};
+
+ModalAddNotes.propTypes = {
+  setModalAddNotes: PropTypes.func,
+  setNotes: PropTypes.func,
 };
 
 export default ModalAddNotes;

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const Modal = ({ children, onClose }) => {
   const ref = useRef(null);
@@ -34,6 +35,11 @@ const Modal = ({ children, onClose }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  children: React.ReactNode,
+  onClose: PropTypes.func,
 };
 
 export default Modal;

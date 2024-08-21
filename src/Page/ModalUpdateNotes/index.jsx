@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Modal from '../../Components/Modal';
 import Input from '../../Components/Input';
 import NotesApi from '../../API/notes';
 
-const ModalUpdateNotes = ({ setModalUpdateNotes, id }) => {
+const ModalUpdateNotes = ({ id, setModalUpdateNotes }) => {
   const [note, setNote] = useState({
     id: '',
     title: '',
@@ -78,6 +79,11 @@ const ModalUpdateNotes = ({ setModalUpdateNotes, id }) => {
       </form>
     </Modal>
   );
+};
+
+ModalUpdateNotes.propTypes = {
+  id: PropTypes.string,
+  setModalUpdateNotes: PropTypes.func,
 };
 
 export default ModalUpdateNotes;
