@@ -1,16 +1,16 @@
-import React from "react";
-const Input = (props) => {
-  const {
-    type,
-    name,
-    placeholder,
-    className,
-    required,
-    defaultValue,
-    autoFocus,
-    onChange,
-  } = props;
+import React from 'react';
+import PropTypes from 'prop-types';
 
+const Input = ({
+  type,
+  name,
+  placeholder,
+  className,
+  required,
+  defaultValue,
+  autoFocus,
+  onChange,
+}) => {
   return (
     <input
       type={type}
@@ -24,6 +24,17 @@ const Input = (props) => {
       required={required}
     />
   );
+};
+
+Input.propTypes = {
+  type: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+  required: PropTypes.bool,
+  defaultValue: PropTypes.string,
+  autoFocus: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default Input;

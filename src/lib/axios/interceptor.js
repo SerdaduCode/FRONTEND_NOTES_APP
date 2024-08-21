@@ -15,7 +15,13 @@ const onResponseError = (err) => {
 };
 
 export const setupInterceptor = (instance) => {
-  instance.interceptors.request.use(onRequest, onRequestError);
-  instance.interceptors.response.use(onResponse, onResponseError);
+  instance.interceptors.request.use(
+    onRequest,
+    onRequestError,
+  );
+  instance.interceptors.response.use(
+    onResponse,
+    onResponseError,
+  );
   return instance;
 };

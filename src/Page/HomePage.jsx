@@ -37,6 +37,7 @@ const HomePage = () => {
   useEffect(() => {
     getNotes();
   }, []);
+
   return (
     <>
       <main className="h-screen">
@@ -50,12 +51,14 @@ const HomePage = () => {
             </div>
           </div>
           <div className="grid content-center grid-cols-1 px-3 lg:px-0 md:grid-cols-2 lg:grid-cols-4 gap-3">
-            {notes?.map((note) => (
+           {notes?.map((note) => (
               <Card
                 key={note.id}
+                id={note.id}
                 title={note.title}
                 body={note.body}
                 createdAt={note.createdAt}
+                getNotes={getNotes}
               />
             ))}
           </div>
