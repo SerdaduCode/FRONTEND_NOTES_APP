@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import Modal from '../../Components/Modal';
-import Input from '../../Components/Input';
-import NotesApi from '../../API/notes';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import Modal from "../../Components/Modal";
+import Input from "../../Components/Input";
+import NotesApi from "../../API/notes";
 
-const ModalUpdateNotes = ({ id, setModalUpdateNotes }) => {
+const ModalUpdateNotes = ({ id, setModalUpdateNotes, getNotes }) => {
   const [note, setNote] = useState({
-    id: '',
-    title: '',
-    body: '',
-    createdAt: '',
-    updatedAt: '',
+    id: "",
+    title: "",
+    body: "",
+    createdAt: "",
+    updatedAt: "",
     archived: false,
   });
 
@@ -30,8 +30,7 @@ const ModalUpdateNotes = ({ id, setModalUpdateNotes }) => {
     } catch (error) {
       console.log(error);
     } finally {
-      event.target.reset();
-      window.location.reload();
+      getNotes();
     }
   };
 
@@ -49,10 +48,7 @@ const ModalUpdateNotes = ({ id, setModalUpdateNotes }) => {
       <p className="text-2xl text-primary font-bold italic text-center underline">
         Update Notes
       </p>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
           type="text"
           name="title"
@@ -62,7 +58,7 @@ const ModalUpdateNotes = ({ id, setModalUpdateNotes }) => {
         />
         <textarea
           name="body"
-          className="py-3 px-4 block w-full rounded-lg text-sm border-gray-300 focus:outline-none"
+          className="no-scrollbar py-3 px-4 block w-full rounded-lg text-sm border-gray-300 focus:outline-none"
           rows="11"
           placeholder="Tuliskan catatan..."
           defaultValue={note.body}
@@ -73,7 +69,7 @@ const ModalUpdateNotes = ({ id, setModalUpdateNotes }) => {
             type="submit"
             className={` bg-primary text-white rounded-lg px-4 py-2`}
           >
-            {'Save'}
+            {"Update"}
           </button>
         </div>
       </form>
@@ -84,6 +80,7 @@ const ModalUpdateNotes = ({ id, setModalUpdateNotes }) => {
 ModalUpdateNotes.propTypes = {
   id: PropTypes.string,
   setModalUpdateNotes: PropTypes.func,
+  getNotes: PropTypes.func,
 };
 
 export default ModalUpdateNotes;

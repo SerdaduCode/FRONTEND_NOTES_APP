@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Modal from '../../Components/Modal';
-import Input from '../../Components/Input';
-import NotesApi from '../../API/notes';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import Modal from "../../Components/Modal";
+import Input from "../../Components/Input";
+import NotesApi from "../../API/notes";
 
-const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
+const ModalAddNotes = ({ setModalAddNotes, setNotes, getNotes }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -17,13 +17,12 @@ const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
       const { data } = await NotesApi.addNote(note);
       setNotes(data);
       setModalAddNotes(false);
+      await getNotes();
     } catch (error) {
-      console.log(error);
       setIsLoading(false);
     } finally {
       setIsLoading(false);
       event.target.reset();
-      window.location.reload();
     }
   };
   return (
@@ -31,10 +30,7 @@ const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
       <p className="text-2xl text-primary font-bold italic text-center underline">
         Add Notes
       </p>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
           type="text"
           placeholder="Title..."
@@ -44,7 +40,7 @@ const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
         />
         <textarea
           name="body"
-          className="py-3 px-4 block w-full rounded-lg text-sm border-gray-300 focus:outline-none"
+          className="no-scrollbar py-3 px-4 block w-full rounded-lg text-sm border-gray-300 focus:outline-none"
           rows="11"
           placeholder="Tuliskan catatan..."
         ></textarea>
@@ -52,11 +48,11 @@ const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
           <button
             type="submit"
             className={`${
-              isLoading ? 'cursor-not-allowed' : ''
+              isLoading ? "cursor-not-allowed" : ""
             } bg-primary text-white rounded-lg px-4 py-2`}
             disabled={isLoading}
           >
-            {isLoading ? 'Loading...' : 'Save'}
+            {isLoading ? "Loading..." : "Save"}
           </button>
         </div>
       </form>
@@ -67,6 +63,7 @@ const ModalAddNotes = ({ setModalAddNotes, setNotes }) => {
 ModalAddNotes.propTypes = {
   setModalAddNotes: PropTypes.func,
   setNotes: PropTypes.func,
+  getNotes: PropTypes.func,
 };
 
 export default ModalAddNotes;
